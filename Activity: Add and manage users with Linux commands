@@ -1,0 +1,34 @@
+# Linux User & Group Management Essentials
+
+This project demonstrates core Linux commands for managing users and groups. It covers adding, modifying, and deleting user accounts and groups, along with changing file ownership.
+
+---
+
+## Commands & Concepts
+
+* **`useradd`**: Create new users.
+* **`usermod`**: Modify user properties (e.g., primary `-g` and supplementary `-G` groups). Use `-a` with `-G` to append.
+* **`chown`**: Change file/directory ownership.
+* **`userdel`**: Delete user accounts.
+* **`groupdel`**: Delete groups.
+* **`sudo`**: Execute commands with superuser privileges.
+
+---
+
+## Scenario Highlights
+
+The provided command examples illustrate:
+* Creating user `researcher9`.
+* Assigning `researcher9` to the `research_team` primary group.
+* Correcting syntax for adding users to supplementary groups (`sudo usermod -a -G sales_team researcher9`).
+* Changing file ownership for `project_r.txt`.
+* Deleting user `researcher9` and the `researcher9` group (if it exists and is empty).
+
+---
+
+## Key Takeaways
+
+* Always use `sudo` for administrative tasks.
+* Pay close attention to command syntax (spacing, options).
+* Ensure groups exist before assigning users to them.
+* Understand primary vs. supplementary groups.
