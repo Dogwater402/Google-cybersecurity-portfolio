@@ -1,0 +1,24 @@
+This SQL exercise showcases basic data retrieval from a log_in_attempts table, focusing on date-based filtering.
+
+Point of the Exercise:
+To demonstrate how to select all columns (SELECT *) from the log_in_attempts table, using the WHERE clause to filter records based on the login_date column. It illustrates two key comparison operators: > (greater than) and >= (greater than or equal to), and the BETWEEN operator for a date range.
+
+Errors Made & Learning Points:
+
+Case Sensitivity (Table Name):
+
+Error: ERROR 1146 (42S02): Table 'organization.Log_in_attempts' doesn't exist
+
+Explanation: MariaDB (and MySQL) table names can be case-sensitive depending on the operating system (e.g., Linux is case-sensitive by default, Windows is not). The table was created as log_in_attempts (all lowercase), but the second query used Log_in_attempts (mixed case), causing the "table doesn't exist" error.
+
+Fix: Always use the exact casing of the table name as it was created (log_in_attempts). To avoid issues, it's a best practice to use lowercase for table and column names or consistently follow a naming convention.
+
+Date Filtering Logic:
+
+WHERE login_date > '2022-05-09': This correctly retrieves records after May 9th, 2022 (i.e., starting from May 10th). (125 rows)
+
+WHERE login_date >= '2022-05-09': This correctly retrieves records on or after May 9th, 2022. This is often the desired behavior when you want to include the start date. (165 rows)
+
+WHERE login_date BETWEEN '2022-05-09' AND '2022-05-11': This efficiently retrieves records within a specific date range, inclusive of both the start and end dates. This is generally preferred over multiple >= and <= conditions for readability.
+
+This exercise highlights filtering data by date and the importance of case sensitivity in SQL, especially for table names.
