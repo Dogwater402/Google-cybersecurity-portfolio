@@ -1,0 +1,46 @@
+Here's the filled-out template based on our previous SQL query discussions:
+
+Apply filters to SQL queries
+Project description This project focuses on demonstrating how to effectively apply various filters to SQL queries using WHERE clauses, logical operators (AND, OR, NOT), comparison operators (>, =, <>), and pattern matching (LIKE). The goal is to retrieve specific subsets of data from tables like log_in_attempts and employees based on defined criteria, which is crucial for data analysis, security monitoring, and business intelligence.
+Retrieve after hours failed login attempts To retrieve all unsuccessful login attempts that occurred after 6 PM (18:00:00), the following SQL query is used. This helps in identifying potential security threats or unusual activity outside of regular business hours.
+SQL
+SELECT *
+FROM log_in_attempts
+WHERE login_time > '18:00:00' AND success = 0;
+
+Retrieve login attempts on specific dates (This task was not explicitly covered in our previous conversation, but I can add a plausible example based on common filtering needs.) To retrieve all login attempts that occurred on a specific date, for example, '2025-07-03', the query would involve comparing the login_time to the date. If login_time includes time, you might use DATE() function or a range.
+SQL
+SELECT *
+FROM log_in_attempts
+WHERE login_time >= '2025-07-03 00:00:00' AND login_time < '2025-07-04 00:00:00';
+-- OR if login_time is just a date field or you want to extract date:
+-- WHERE DATE(login_time) = '2025-07-03';
+
+Retrieve login attempts outside of Mexico (This task was not explicitly covered in our previous conversation, but I can add a plausible example based on common filtering needs, assuming a country column exists.) To identify login attempts originating from any country other than Mexico, assuming there is a country column in the log_in_attempts table, the query would be:
+SQL
+SELECT *
+FROM log_in_attempts
+WHERE country <> 'Mexico';
+
+Retrieve employees in Marketing To obtain information about employees specifically in the 'Marketing' department who are located in any office within the 'East' building (e.g., 'East-170', 'East-320'), this query combines equality and pattern matching:
+SQL
+SELECT *
+FROM employees
+WHERE department = 'Marketing' AND office LIKE 'East-%';
+
+Retrieve employees in Finance or Sales To retrieve records for employees who belong to either the 'Finance' department or the 'Sales' department, the OR operator is used to combine the conditions:
+SQL
+SELECT *
+FROM employees
+WHERE department = 'Finance' OR department = 'Sales';
+
+Retrieve all employees not in IT To retrieve records for all employees who are not part of the 'Information Technology' department, using the NOT operator provides a clear way to express the exclusion:
+SQL
+SELECT *
+FROM employees
+WHERE NOT department = 'Information Technology';
+
+(Alternatively, using <> or != achieves the same result: WHERE department <> 'Information Technology';)
+Summary This project successfully demonstrates the application of fundamental SQL filtering techniques using the WHERE clause. By utilizing various operators such as AND, OR, NOT, =, >, <>, and LIKE, we can precisely select and retrieve data based on multiple criteria. These skills are essential for querying databases efficiently, extracting relevant information for analysis, and performing targeted data management operations across different scenarios like security monitoring (login attempts) and human resources data (employee demographics).
+
+
